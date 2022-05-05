@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <!-- search bar -->
+  <div class="row" id="search-bar">
+    <div class="col-12">
+      <form action="/search">
+        <div class="input-group mb-3">
+          <input type="text" name="keyword" class="form-control" placeholder="Enter movie name to search..."
+            aria-label="Movie Name..." aria-describedby="search-button" value="{{keyword}}">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- movie list -->
+  <div class="row" id="data-panel">
+    {{!-- handlebars中有#each迴圈可以使用，要搭配陣列 --}}
+    <!-- 所有包在{{#each movies}}跟{{/each}}中間的東西都會迭代生成 -->
+    {{!-- 需要迭代變化的地方要寫this --}}
+    {{#each movies}}
+    <div class="col-sm-3">
+      <a href="/movie/{{this.id}}" class="text-secondary">
+        <div class="card mb-2">
+          <img class="card-img-top" src="https://movie-list.alphacamp.io/posters/{{this.image}}" alt="Card image cap">
+          <div class="card-body movie-item-body">
+            <h6 class="card-title">{{this.title}}</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+    {{/each}}
+  </div>
+</div>
+</div>
